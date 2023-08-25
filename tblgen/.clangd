@@ -1,0 +1,38 @@
+Hover:
+  ShowAKA: Yes
+# Diagnostics:
+#   UnusedIncludes: Strict
+
+# If:
+#   PathMatch: .*\.h
+# CompileFlags:
+#   Add: [-xc, -Wall]
+#   Compiler: gcc
+---
+If:
+  PathMatch: 
+  - .*\.hpp
+  - .*\.cpp
+CompileFlags:
+  Add: 
+  - -Wall
+  - -I/home/cha0s/mlir-output/include
+  - -DBUILD_EXAMPLES 
+  - -D_GNU_SOURCE 
+  - -D_DEBUG
+  - -D_GLIBCXX_ASSERTIONS 
+  - -D_LIBCPP_ENABLE_ASSERTIONS 
+  - -D__STDC_CONSTANT_MACROS 
+  - -D__STDC_FORMAT_MACROS 
+  - -D__STDC_LIMIT_MACROS
+  - -std=c++17
+---
+If:
+  PathMatch:
+  - .*\.h
+  - .*\.c
+CompileFlags:
+  Add:
+  - -Wall
+  - -I/home/cha0s/mlir-output/include
+  
