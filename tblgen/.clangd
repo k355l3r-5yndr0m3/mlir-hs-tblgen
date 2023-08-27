@@ -16,7 +16,7 @@ If:
 CompileFlags:
   Add: 
   - -Wall
-  - -I/home/cha0s/mlir-output/include
+  - -I/home/cha0s/.local/include
   - -DBUILD_EXAMPLES 
   - -D_GNU_SOURCE 
   - -D_DEBUG
@@ -34,5 +34,5 @@ If:
 CompileFlags:
   Add:
   - -Wall
-  - -I/home/cha0s/mlir-output/include
+  - -I/home/cha0s/.local/include
   
