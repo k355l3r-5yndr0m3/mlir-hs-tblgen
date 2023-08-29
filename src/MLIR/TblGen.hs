@@ -9,11 +9,11 @@ import Foreign (Ptr, withArrayLen, free)
 import Foreign.C (CInt(..), CString, newCString)
 
 
-hsGenerate :: [FilePath] -> FilePath -> String -> [String] -> FilePath -> IO ()
-hsGenerate includeDirs tableGenFile moduleName importedModule outputFile = hsGenerator args
+hsGenerate :: [FilePath] -> FilePath -> String -> String -> [String] -> FilePath -> IO ()
+hsGenerate includeDirs tableGenFile header moduleName importedModule outputFile = hsGenerator args
   where args = "hsGenerator":mconcat[includeDirs <&> (\x -> '-':'I':x),
                                      mconcat (importedModule <&> \m -> ["-i", m]),
-                                     ["-m", moduleName, "-o", outputFile, tableGenFile]]
+                                     ["-m", moduleName, "-o", outputFile, "-p", header, tableGenFile]]
 
 foreign import ccall unsafe "hs_generator" 
   hsGenerator' :: CInt -> Ptr CString -> IO ()
